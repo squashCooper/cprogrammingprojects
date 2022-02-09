@@ -1,0 +1,124 @@
+/******************************************************************************** 
+Create a program where a user enters student's grades, the grades are entered into
+an array and displayed. The average grade is calculated and displayed,The letter grade 
+equivalent is shown,grades under the average are marked with an asterisk. 
+
+Cooper
+
+*******************************************************************************/
+#include <stdio.h>
+#include <iostream>
+using namespace std;
+
+void insertElement(int gradeArray[], int);
+
+
+
+int gradeInput = 0;
+
+int main()
+{
+    int num = 0;
+    int studentGrades[num];
+    int grade;
+    
+    double avg = 0, sum = 0;
+    int count = 0;
+    
+    cout << "Enter size of array: ";
+    cin >> num;
+    cout << "Enter student grade: \n";
+    cin >> grade;
+     
+    while(grade >= 0)
+    {
+        
+        insertElement(studentGrades, grade);
+        //adds grades
+       
+            sum+=grade;
+        
+        cout << "Enter another grade or a negative grade to exit: \n";
+        cin >> grade;
+        //increment count
+       
+            count++;
+    
+        
+           
+    }
+    //calcs avg
+    avg = sum/count;
+            
+    //displays array
+    for(int i = 0; i < gradeInput; i++)
+    {
+       
+        cout << studentGrades[i] << " ";
+        
+    }
+   
+    //user info
+    cout << "\n The average is " << avg << endl;
+    cout<<"Grades that are lower than average are marked with an '*' \n";
+    cout<< "The student grades are: \n";
+     
+     
+//displays grades     
+     for(int i = 0; i<count; i++)
+   
+    {
+        
+        if(studentGrades[i]>=90 && studentGrades[i]<= 100)
+        {
+            cout << studentGrades[i] << " = A \n";
+        }
+        if(studentGrades[i]>=80 &&studentGrades[i] <= 89)
+        {
+            cout << studentGrades[i] << " = B \n";
+        }
+        if(studentGrades[i]>=70 &&  studentGrades[i]<=79)
+        {
+            cout << studentGrades[i] << " = C \n";
+        }
+        if(studentGrades[i]>=60 &&studentGrades[i] <= 69)
+        {
+            cout << studentGrades[i] << " = D \n";
+        }
+        if(studentGrades[i]<60)
+        {
+            cout << studentGrades[i] << " = F \n";
+        }
+        
+    }
+    
+    //marks grades that are less than average
+    for(int i = 0; i<count; i++)
+    {
+    if(studentGrades[i]<avg)
+        {
+            cout<< "*" << studentGrades[i] << "\n";
+        }
+    }
+       
+
+    return 0;
+}
+
+
+void insertElement(int gradeArray[], int element)
+{
+    //inserts num into array
+   
+    
+        int i;
+        for (i = gradeInput - 1; (i >= 0 && gradeArray[i] < element); i--)
+        gradeArray[i+1] = gradeArray[i];
+        gradeArray[i+1] = element;
+        cout << element << " has been added to the array " << endl;
+        //increment input
+        gradeInput++;
+   
+}
+
+
