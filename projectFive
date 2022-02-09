@@ -1,0 +1,65 @@
+/******************************************************************************
+
+
+
+
+Allow a user to enter up to 50 grades, display the grades in an array in
+descending order. 
+
+Cooper
+
+*******************************************************************************/
+#include <stdio.h>
+#include <iostream>
+using namespace std;
+
+void insertElement(int gradeArray[], int);
+
+int const numberOfGrades = 50;
+int gradeInput = 0;
+int main()
+{
+    int grade;
+    int studentGrades[numberOfGrades];
+    int count = 0;
+   
+    cout << "Enter student grade: \n";
+    cin >> grade;
+     
+    
+    while(grade >= 0 && gradeInput < numberOfGrades)
+    {
+        insertElement(studentGrades, grade);
+        
+        cout << "Enter another grade or a negative grade to exit: \n";
+        cin >> grade;
+           
+    }
+   for(int i = 0; i < gradeInput; i++)
+    {
+       
+        cout << studentGrades[i] << " ";
+        
+    }
+    
+    return 0;
+}
+void insertElement(int gradeArray[], int element)
+{
+    //inserts num into array
+    if(gradeInput >= numberOfGrades)
+    {
+        cout << "Array is full, unable to insert element: \n";
+    }
+    else
+    {
+        int i;
+        for (i = gradeInput - 1; (i >= 0 && gradeArray[i] < element); i--)
+        gradeArray[i + 1] = gradeArray[i];
+        gradeArray[i + 1] = element;
+        cout << element << " has been added to the array " << endl;
+        //increment input
+        gradeInput++;
+    }
+   
+}
